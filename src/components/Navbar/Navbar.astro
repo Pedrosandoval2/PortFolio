@@ -1,0 +1,193 @@
+---
+const menus = [
+    {
+        text: "Home",
+        href: "/",
+        title: "Inicio",
+    },
+    {
+        text: "About",
+        href: "/about",
+        title: "Sobre mí",
+    },
+    {
+        text: "Services",
+        href: "/services",
+        title: "Servicios",
+    },
+    {
+        text: "Contact",
+        href: "/contact",
+        title: "Contacto",
+    },
+];
+---
+
+<header
+    id="site-header"
+    class="flex justify-center items-center text-white h-16 border-b-indigo-500 border-b-1 w-full"
+>
+    <a href="/" class="ml-5">MyLogo</a>
+    <!-- List Mobile -->
+    <nav class="md:block hidden ml-auto">
+        <ul class="flex space-x-9 mr-5">
+            {
+                menus.map((menu) => (
+                    <li>
+                        <a
+                            href={menu.href}
+                            title={menu.title}
+                            class="text-gray-elegant-200 hover:text-gray-elegant-100"
+                        >
+                            {menu.text}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+
+    <!-- Icon Mobile -->
+
+    <div class="flex sm:gap-5 gap-0 md:ml-0 ml-auto mr-5">
+        <button
+            id="mobile-menu-button"
+            class="md:hidden focus:outline-none"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+        >
+            <svg
+                class="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 8h16M4 16h16"></path>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile -->
+<div
+    id="mobile-menu"
+    class="md:hidden fixed inset-0 bg-[#161617] shadow z-60 opacity-0 pointer-events-none transform -translate-y-full transition-all duration-500 ease-in-out"
+>
+    <!-- Botón de cerrar -->
+    <button
+        id="mobile-menu-close"
+        class="absolute top-4 right-4 text-white focus:outline-none"
+        aria-label="Cerrar menú"
+    >
+        <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+    <!-- Opciones del menú móvil -->
+    <ul
+        class="flex flex-col items-center space-y-3 py-4 px-10 mt-16 intersect-quarter intersect:animate-fade1"
+    >
+        {
+            menus.map((menu) => (
+                <li>
+                    <a
+                        href={menu.href}
+                        title={menu.title}
+                        class="text-gray-200 text-2xl font-bold"
+                    >
+                        {menu.text}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+    <!-- <div class="flex-1 flex justify-end"> -->
+    <!-- </div> -->
+</div>
+
+<script is:inline>
+    const header = document.getElementById("site-header");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    // Dentro del desplegable
+    const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+    // Función para abrir el menú móvil con animación y desactivar scroll
+    function openMobileMenu() {
+        mobileMenu.classList.remove(
+            "opacity-0",
+            "pointer-events-none",
+            "-translate-y-full",
+        );
+        mobileMenu.classList.add(
+            "opacity-100",
+            "pointer-events-auto",
+            "translate-y-0",
+        );
+        mobileMenuButton.setAttribute("aria-expanded", "true");
+        document.body.classList.add("overflow-hidden");
+    }
+
+    // Función para cerrar el menú móvil con animación y reactivar scroll
+    function closeMobileMenu() {
+        mobileMenu.classList.remove(
+            "opacity-100",
+            "pointer-events-auto",
+            "translate-y-0",
+        );
+        mobileMenu.classList.add(
+            "opacity-0",
+            "pointer-events-none",
+            "-translate-y-full",
+        );
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("overflow-hidden"); // Reactiva el scroll
+    }
+
+    // Evento para cerrar el menú móvil al hacer clic en el botón de cerrar
+    mobileMenuButton.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("opacity-0")) {
+            openMobileMenu();
+        } else {
+            closeMobileMenu();
+        }
+    });
+
+    mobileMenuClose.addEventListener("click", () => {
+        closeMobileMenu();
+    });
+
+    window.addEventListener("scroll", () => {
+        if (mobileMenuButton.getAttribute("aria-expanded") === "true") return;
+        if (window.scrollY > 50) {
+            header.classList.remove("bg-opacity-0", "bg-black-rich");
+            header.classList.add(
+                "bg-opacity-100",
+                "shadow",
+                "backdrop-blur-sm",
+                "bg-black/75",
+            );
+        } else {
+            header.classList.remove(
+                "bg-opacity-100",
+                "shadow",
+                "backdrop-blur-sm",
+                "bg-black/75",
+            );
+            header.classList.add("bg-opacity-0", "bg-black-rich");
+        }
+    });
+</script>

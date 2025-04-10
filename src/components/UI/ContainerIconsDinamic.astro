@@ -1,0 +1,23 @@
+---
+const { link, colorSvg } = Astro.props;
+---
+
+<a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="text-gray-elegant-700 hover:text-primary
+            transition-all duration-400 ease-in-out
+            rounded-2xl px-0.5 hover:px-5
+            transform hover:scale-180"
+>
+    <svg
+        class="w-6 h-6 fill-current"
+        viewBox="0 0 24 24"
+        style={`color: ${colorSvg};`}
+    >
+        <slot />
+    </svg>
+</a>
+
+<script></script>

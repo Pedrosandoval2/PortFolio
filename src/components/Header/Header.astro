@@ -1,0 +1,45 @@
+---
+import Button from "../UI/Button.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    urlImage: string;
+}
+
+const { title, description, urlImage } = Astro.props;
+---
+
+<div
+    class="relative flex flex-col items-center justify-center bg-cover bg-center h-144
+        intersect-once intersect-quarter md:opacity-0 md:intersect:animate-fade border-b-1 border-b-indigo-500"
+    style={`background-image: url('${urlImage}');`}
+>
+    <div class="relative z-10 text-center px-4 pt-12">
+        <h1 class="text-3xl text-amber-50 md:text-5xl font-medium">
+            {title}
+        </h1>
+        <p class="mt-1 text-lg text-amber-50 max-w-2xl mx-auto font-thin">
+            {description}
+        </p>
+        <div class="mt-4 space-x-2">
+            <slot />
+        </div>
+    </div>
+    <Button id="button-contact-me" size="sm" href=""> Contactame </Button>
+</div>
+
+<script is:inline>
+    const buttonContactMe = document.getElementById("button-contact-me");
+
+    buttonContactMe.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent default anchor click behavior
+        const contactMeSection = document.getElementById("contact-me");
+        if (contactMeSection) {
+            // Scroll to the contact-me section smoothly
+            contactMeSection.scrollIntoView({ behavior: "smooth" });
+        } else {
+            console.error("Element with ID 'contact-me' not found.");
+        }
+    });
+</script>

@@ -1,0 +1,50 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+    type?: "inline" | "primary" | "secondary";
+    size: "sm" | "lg" | "xl";
+    classCustom?: string;
+    isRounded?: boolean;
+}
+
+const commonStyles =
+    "inline-block border transition duration-500 transition-all text-center cursor-pointer";
+const {
+    type = "primary",
+    size,
+    isRounded = true,
+    classCustom,
+    ...attrs
+} = Astro.props;
+const sizeConfig = {
+    sm: "px-4 py-2 text-sm sm:px-4 sm:py-2",
+    lg: "px-5 py-2 text-sm sm:px-8 sm:py-3 sm:text-base",
+    xl: "px-5 py-4 text-xl sm:px-10 sm:py-4 sm:text-lg",
+};
+
+const typeConfig = {
+    primary: "hover:border-white bg-white text-black-rich",
+    inline: "border-white text-white hover:bg-white hover:text-black-rich",
+    secondary: "hover:border-black-rich bg-black-rich text-white",
+};
+
+const sizeStyles = sizeConfig[size];
+const typeStyles = typeConfig[type];
+const roundedStyle = isRounded ? "rounded-4xl" : "rounded-xl";
+---
+
+<a
+    class:list={[
+        commonStyles,
+        sizeStyles,
+        typeStyles,
+        roundedStyle,
+        classCustom,
+    ]}
+    {...attrs}
+>
+    <span>
+        <slot />
+    </span>
+</a>
