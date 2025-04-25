@@ -1,23 +1,23 @@
 ---
 const menus = [
     {
-        text: "Home",
-        href: "/",
+        text: "Inicio",
+        href: "inicio",
         title: "Inicio",
     },
     {
-        text: "About",
-        href: "/about",
+        text: "Sobre mí",
+        href: "about",
         title: "Sobre mí",
     },
     {
-        text: "Services",
-        href: "/services",
-        title: "Servicios",
+        text: "Servicios",
+        href: "services",
+        title: "Proyectos",
     },
     {
-        text: "Contact",
-        href: "/contact",
+        text: "Contacto",
+        href: "contact",
         title: "Contacto",
     },
 ];
@@ -25,22 +25,21 @@ const menus = [
 
 <header
     id="site-header"
-    class="flex justify-center items-center text-white h-16 border-b-indigo-500 border-b-1 w-full"
+    class="flex justify-center items-center text-white h-16 border-b-[#fff] border-b-1"
 >
-    <a href="/" class="ml-5">MyLogo</a>
+    <!-- <a href="/" class="ml-5">MyLogo</a> -->
     <!-- List Mobile -->
-    <nav class="md:block hidden ml-auto">
-        <ul class="flex space-x-9 mr-5">
+    <nav class="md:block hidden">
+        <ul class="flex gap-5">
             {
                 menus.map((menu) => (
                     <li>
-                        <a
-                            href={menu.href}
+                        <p
                             title={menu.title}
-                            class="text-gray-elegant-200 hover:text-gray-elegant-100"
+                            class="text-2xl my-2 font-light cursor-pointer"
                         >
                             {menu.text}
-                        </a>
+                        </p>
                     </li>
                 ))
             }
