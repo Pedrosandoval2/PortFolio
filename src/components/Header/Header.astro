@@ -1,0 +1,197 @@
+---
+import Button from "../UI/Button.astro";
+import ContainerIconsDinamic from "../UI/ContainerIconsDinamic.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    urlImage: string;
+}
+
+const currentYear = new Date().getFullYear();
+
+const { title, description, urlImage } = Astro.props;
+---
+
+<div
+    id="header"
+    class="relative flex flex-col items-center justify-center bg-cover bg-center h-full
+        intersect-once intersect-quarter md:intersect:animate-fade border-b-1 border-b-indigo-500 m-auto"
+    style={`--bg-url: url('${urlImage}')`}
+>
+    <div
+        class="absolute inset-0 bg-[image:var(--bg-url)] bg-cover bg-center opacity-60 max-w-[100rem] m-auto"
+    >
+    </div>
+    <div class="relative z-12 text-center px-4 pt-12">
+        <h1 class="text-6xl z-12 text-white md:text-5xl font-medium">
+            {title}
+        </h1>
+        <p class="mt-1 text-lg z-12 text-white max-w-2xl mx-auto font-thin">
+            {description}
+        </p>
+    </div>
+    <div class=" flex justify-center items-center">
+        <!-- Contenedor de tres columnas -->
+        <div class="grid grid-cols-1 gap-8">
+            <h4
+                class="text-xl text-center font-semibold text-black-rich mb-4 text-white z-10"
+            >
+                <div class="mt-3">
+                    <div
+                        class="text-xl flex justify-center md:block font-semibold text-black-rich mb-0"
+                    >
+                        <div class="flex gap-4">
+                            <a
+                                target="_blank"
+                                href="https://github.com/Pedrosandoval1"
+                            >
+                                <svg
+                                    width="25px"
+                                    height="25px"
+                                    viewBox="0 0 20 20"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                >
+                                    <g
+                                        id="Page-1"
+                                        stroke="none"
+                                        stroke-width="1"
+                                        fill="none"
+                                        fill-rule="evenodd"
+                                    >
+                                        <g
+                                            id="Dribbble-Light-Preview"
+                                            transform="translate(-140.000000, -7559.000000)"
+                                            fill="#fff"
+                                        >
+                                            <g
+                                                id="icons"
+                                                transform="translate(56.000000, 160.000000)"
+                                            >
+                                                <path
+                                                    d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399"
+                                                    id="github-[#142]"
+                                                >
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+                            <!-- LinkedIn -->
+                            <ContainerIconsDinamic
+                                link="https://www.linkedin.com/in/pedro-sandoval-espinoza-576590191/"
+                                colorSvg="white"
+                            >
+                                <path
+                                    d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.16h.05c.53-.99 1.82-2.04 3.75-2.04 4.01 0 4.75 2.64 4.75 6.07V24h-4v-7.28c0-1.74-.03-3.98-2.43-3.98-2.43 0-2.81 1.9-2.81 3.85V24h-4V8z"
+                                ></path>
+                            </ContainerIconsDinamic>
+                            <!-- CV -->
+                            <a id="open-modal" style="cursor:pointer;">
+                                <svg
+                                    fill="#fff"
+                                    width="25px"
+                                    height="25px"
+                                    viewBox="0 0 846.66 846.66"
+                                    style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                    version="1.1"
+                                    xml:space="preserve"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                >
+                                    <defs>
+                                        <style type="text/css"></style>
+                                    </defs>
+                                    <g id="Layer_x0020_1">
+                                        <path
+                                            class="fil0"
+                                            d="M539.75 794.68c27.15,0 27.15,41.29 0,41.29l-497.47 0c-11.4,0 -20.64,-9.25 -20.64,-20.65l0 -621.69c0,-5.7 2.31,-10.87 6.04,-14.6l162.3 -162.29c4.03,-4.03 9.31,-6.05 14.59,-6.05l466.89 0c11.4,0 20.65,9.25 20.65,20.65l0 361.36c0,27.16 -41.29,27.16 -41.29,0l0 -340.72 -437.7 0 -150.19 150.2 0 592.5 476.82 0zm-351.21 -181.98c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm496.57 238.25c49.84,0 90.24,40.4 90.24,90.24 0,18.1 -5.33,34.95 -14.5,49.07 37.57,24.93 61.47,66.08 64.13,111.2 1.59,27.06 -39.55,29.47 -41.13,2.42 -2.11,-35.69 -22.61,-67.48 -54.13,-84.24 -13.16,7.5 -28.38,11.78 -44.61,11.78 -17.56,0 -33.95,-5.01 -47.81,-13.69 -33.44,16.12 -55.6,49.04 -57.79,86.15 -1.59,27.05 -42.72,24.64 -41.13,-2.42 2.79,-47.18 28.75,-89.88 69.08,-114.28 -7.99,-13.47 -12.58,-29.19 -12.58,-45.99 0,-49.83 40.4,-90.24 90.23,-90.24zm0 41.29c-27.03,0 -48.94,21.92 -48.94,48.95 0,27.03 21.91,48.94 48.94,48.94 27.03,0 48.95,-21.91 48.95,-48.94 0,-27.03 -21.91,-48.95 -48.95,-48.95z"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </h4>
+        </div>
+    </div>
+    <Button
+        classCustom="z-10"
+        size="sm"
+        target={"_blank"}
+        href={"https://api.whatsapp.com/send/?phone=933288124"}
+    >
+        Contactame
+    </Button>
+</div>
+
+<!-- Modal -->
+<div
+    class="modal fixed inset-0 hidden items-center justify-center bg-transparent z-50"
+    id="modal"
+>
+    <div class="bg-[#1F1F23] p-6 rounded shadow-lg md:h-[80%] md:w-[50%] sm:h-[100%] sm:w-[100%]  h-full w-full">
+        <div class="flex justify-between items-start">
+            <h2 class="text-xl text-white font-bold mb-4">Curriculum Vitae</h2>
+            <svg
+                id="modal-toggle"
+                class="cursor-pointer"
+                width="25px"
+                height="25px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z"
+                    fill="#fff"></path>
+            </svg>
+        </div>
+        <hr />
+        <embed
+            src="/public/docs/PedroSandovalCV.docx.pdf"
+            type="application/pdf"
+            width="100%"
+            height="100%"
+        />
+    </div>
+</div>
+
+<script is:inline>
+    const buttonContactMe = document.getElementById("button-contact-me");
+    const buttonredirection = document.getElementById("button-contact-me");
+    const openBtn = document.getElementById("open-modal");
+    const modal = document.getElementById("modal");
+    const modalClose = document.getElementById("modal-toggle");
+
+    // buttonContactMe.addEventListener("click", (e) => {
+    //     e.preventDefault(); // Prevent default anchor click behavior
+    //     const contactMeSection = document.getElementById("contact-me");
+    //     if (contactMeSection) {
+    //         // Scroll to the contact-me section smoothly
+    //         contactMeSection.scrollIntoView({ behavior: "smooth" });
+    //     } else {
+    //         console.error("Element with ID 'contact-me' not found.");
+    //     }
+    // });
+
+    openBtn.addEventListener("click", () => {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    });
+
+    modalClose.addEventListener("click", () => {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+    });
+</script>
+
+<style>
+    #modal-toggle:checked ~ .modal {
+        display: flex;
+    }
+</style>
